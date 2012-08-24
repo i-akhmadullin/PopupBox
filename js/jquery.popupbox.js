@@ -5,6 +5,11 @@
 		base.$el = $(el);
 		base.$el.data("link", base);
 
+		base.$overlay = $("#b-popupbox__overlay");
+		base.closeBtn = $(".b-popupbox__close");
+		base.popup = $(".b-popupbox");
+		base.popupWnd = $(".b-popupbox__window");
+
 		base.isOpen = false;
 
 		base.init = function() {
@@ -15,17 +20,27 @@
 			base.addKeyDownListener();
 		};
 		base.open = function() {
-			console.log( 'opening popup' );
+			base.$overlay.show();
+			base.popup.show();
 			base.isOpen = true;
 		};
 		base.close = function() {
-			console.log( 'closing popup' );
+			base.$overlay.hide();
+			base.popup.hide();
 			base.isOpen = false;
 		};
 		base.addClickListener = function() {
+			base.closeBtn.live('click', function() {
+				base.close();
+				return false;
+			});
+			base.$overlay.live('click', function() {
+				base.close();
+			});
 			base.$el.click(function(e) {
 				if (base.isOpen) { return false; }
 				base.open();
+				return false;
 			});
 		};
 
