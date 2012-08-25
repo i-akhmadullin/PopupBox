@@ -1,7 +1,7 @@
-PopupBox - попап на jQuery
+PopupBox - simple jQuery-popup, ie7+
 =================
 
-Dev
+Lightweight popup, all styles are in simple css file, centers popup with pure css.
 
 
 Copyright and license

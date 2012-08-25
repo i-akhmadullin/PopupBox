@@ -1,4 +1,6 @@
 $(document).ready(function() {
-	$("#popupbox").popupbox();
+	$("#popupbox").popupbox({
+		//overlay: false
+	});
 
 });

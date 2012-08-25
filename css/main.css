@@ -1,18 +1,15 @@
-html,body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,a,img
-{
+html,body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,a,img {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	list-style: none;
 }
-html
-{
+html {
 	overflow-y: scroll;
 	width: 100%;
 	height: 100%;
 }
-body
-{
+body {
 	position: relative;
 	width: 100%;
 	height: auto !important;
@@ -28,62 +25,12 @@ input[type="button"] { overflow: visible;  width: auto; }
 button, input, select, textarea { margin: 0; }
 img { vertical-align: bottom; }
 
-.LeftMargin, .RightMargin
-{
-	display: none;
-}
-
-a
-{
+a {
 	color: #055F9F;
 }
-a:hover
-{
+a:hover {
 	color: #FF6633 !important;
 }
-.MaxWidth
-{
-	margin: 0 auto;
-	max-width: 1200px;
-}
-.MinWidth
-{
-	/* position: relative; */
-	margin: 0 auto;
-	min-width: 768px;
-}
-/*----------------------------------- Header --------------------------------*/
-.Header
-{
-	overflow: hidden;
-	margin: 0 auto;
-	padding: 20px 0 0 0;
-	width: 100%;
-}
-.Logo
-{
-	float: left;
-}
-.Menu
-{
-	
-}
-.Menu li
-{
-	display: inline;
-}
-/*----------------------------------- Content --------------------------------*/
-.Wrapper
-{
-	position:relative;
-	overflow: hidden;
-	margin: 0 auto;
-	/* padding: 20px 35px 0px 50px; */
-	min-height: 360px;
-	/* background: #ddd; */
-	font-size: 0.8em;
-}
-.Content
-{
+.content {
 	position:relative;
 }
