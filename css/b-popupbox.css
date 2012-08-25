@@ -47,7 +47,7 @@
 	overflow: hidden;
 	height: 30px;
 	width: 30px;
-	background: url(../img/b_popupbox__close.png) no-repeat;
+	background: url(../img/b-popupbox__close.png) no-repeat;
 }
 .b-popupbox__close:hover {
 	background-position: 0 -30px;

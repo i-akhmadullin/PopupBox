@@ -1,6 +1,5 @@
 $(document).ready(function() {
-	$("#popupbox").popupbox({
+	$("#simplelink").popupbox({
 		//overlay: false
 	});
-
 });
