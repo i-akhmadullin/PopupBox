@@ -33,4 +33,6 @@ a:hover {
 }
 .content {
 	position:relative;
+	text-align: center;
+	padding: 30px;
 }
