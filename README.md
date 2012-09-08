@@ -1,7 +1,7 @@
 PopupBox - simple jQuery-popup, ie7+
 =================
 
-Lightweight popup, all styles are in simple css file, centers popup with pure css.
+Lightweight popup, all styles are in simple css file, centering popup only with css.
 
 
 Copyright and license
