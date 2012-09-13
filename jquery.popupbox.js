@@ -1,7 +1,7 @@
-/*  $("selector").popupbox()
-	then
-	$("selector").popupbox("_open"),
-	$("selector").popupbox("_close")
+/*  $("selector").popupbox();
+	then you can use
+	$("selector").popupbox("_open");
+	$("selector").popupbox("_close");
 */
 ;(function ($) {
 	$.popupbox = function(el, options) {
@@ -63,6 +63,7 @@
 
 		base._close = function() {
 			var callback = function() {
+				base.$popup.remove();
 				base.$overlay.css('display', 'none');
 				base.$popup.css('display', 'none');
 				base.isOpen = false;
@@ -72,7 +73,7 @@
 		};
 
 		base._addClickListener = function() {
-			$doc.on('click', '.' + o.closeClass + ',' + '.' + o.popupClass, function() {
+			$doc.on('click', '.' + o.closeClass + (!o.modal ? ',' + '.' + o.popupClass : ""), function() {
 				base._close();
 				return false;
 			});
@@ -120,6 +121,8 @@
 		windowClass:  'b-popupbox__window',
 		overlayClass: 'b-popupbox__overlay',
 		overlay:      true,
+		modal:        false,
+
 		beforeShow:   false,
 		afterShow:    false,
 		beforeClose:  false,
