@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>PopupBox - simple popup</title>
     <meta name="description" content="Popupbox : " />
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Popupbox</title>
+    <link rel="stylesheet" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" href="b-popupbox.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <script src="b-popupbox.js"></script>
   </head>
-
   <body>
-
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
@@ -31,13 +30,42 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>PopupBox on jQuery, works in ie7+, centering content with pure css.</h3>
+        <h1>Simple popup - centering content with css, closes on click outside and <kbd>esc</kbd> button</h1>
+        <a href="#" id="block-link">Open popup (showing block)</a>
+        <br>
+        <br>
+        <a href="#some-random-content" id="animation-link">Open popup (with custom animation)</a>
+        <br>
+        <br>
+        <a href="#some-random-content" id="simple-link">Open popup (block from href)</a>
+        <br>
+
+        <div id="some-random-content" style="display: none;">
+          <h3>Use cases</h3>
+          Frequent uses of&nbsp;modal windows include:
+          <ol style="width: 500px;">
+            <li>Drawing attention to&nbsp;vital pieces of&nbsp;information. This use has been criticised as&nbsp;ineffective because users are bombarded with too many dialog boxes, and habituate to&nbsp;simply clicking &laquo;Close&raquo;, &laquo;Cancel&raquo;, or&nbsp;&laquo;OK&raquo; without reading or&nbsp;understanding the message.</li>
+            <li>Blocking the application flow until information required to&nbsp;continue is&nbsp;entered, as&nbsp;for example a&nbsp;password in&nbsp;a&nbsp;login process. Another example are file dialogs to&nbsp;open and save files in&nbsp;an&nbsp;application.</li>
+            <li>Collecting application configuration options in&nbsp;a&nbsp;centralized dialog. In&nbsp;such cases, typically the changes are applied upon closing the dialog, and access to&nbsp;the application is&nbsp;disabled while the edits are being made.</li>
+            <li>Warning that the effects of&nbsp;the current action are not reversible. This is&nbsp;a&nbsp;frequent interaction pattern for modal dialogs, but it&nbsp;is&nbsp;also criticised by&nbsp;usability experts as&nbsp;being ineffective for its intended use (protection against errors in&nbsp;destructive actions) due to&nbsp;habituation. Actually making the action reversible (providing an&nbsp;&laquo;undo&raquo; option) is&nbsp;recommended instead.</li>
+          </ol>
+        </div>
+        <div id="random-block" style="display: none;">
+          <h3>Modal window</h3>
+          <p style="width: 540px;">
+            A&nbsp;modal window blocks all other workflow in&nbsp;the top-level
+            program until the modal window is&nbsp;closed, as&nbsp;opposed to&nbsp;modeless dialogs that allow 
+            users to&nbsp;operate with other windows. Modal windows are intended to&nbsp;grab the user&rsquo;s full 
+            attention. Users may not recognize that a&nbsp;modal window requires their attention,
+            leading to&nbsp;confusion about the main window being non-responsive, or&nbsp;causing loss of&nbsp;the 
+            user&rsquo;s data input intended for the main window (see Mode error).
+          </p>
+        </div>
 
 <p>To use it in your page, include this files, :</p>
 
-<pre><code>&lt;link href="css/b-popupbox.css" rel="stylesheet"/&gt;
-&lt;script src="js/jquery.min.js"&gt;&lt;/script&gt;
-&lt;script src="js/jquery.popupbox.js"&gt;&lt;/script&gt;
+<pre><code>&lt;link href="b-popupbox.css" rel="stylesheet"/&gt;
+&lt;script src="b-popupbox.js"&gt;&lt;/script&gt;
 </code></pre>
 
 <p>Then in your js files, init plugin on link click with:</p>
@@ -71,7 +99,30 @@
       </footer>
     </div>
 
-    
+    <script>
+      $(document).ready(function() {
+        $("#random-block").popupbox();
+        $("#block-link").click(function() {
+          $("#random-block").popupbox("_open");
+        })
 
+        $("#animation-link").popupbox({
+          //overlay: false,
+          beforeShow: function(popup, proceed) {
+            popup.$popup.css("margin-top", "-100%");
+            proceed();
+          },
+          afterShow: function(popup) {
+            popup.$popup.animate({marginTop: "0%"}, 300);
+          },
+          beforeClose: function(popup, proceed) {
+            popup.$popup.animate({marginTop: "-100%"}, 300, function() {
+              proceed();
+            });
+          }
+        });
+        $("#simple-link").popupbox();
+      });
+    </script>
   </body>
 </html>
