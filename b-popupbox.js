@@ -28,14 +28,24 @@
 		base.$overlay = $(base.overlay);
 
 		base._build = function() {
-			var contentUrl = base.$el.attr('href');
-			base.$content = $(contentUrl ? contentUrl : base.$el).clone(true,true);
-			base.wnd.appendChild(base.$content[0]);
-			base.$content.show();
+			var contentUrl = base.$el.attr('href') ? base.$el.attr('href') : base.$el.attr('data-link');
+			var target;
 
-			base.popup.appendChild(base.helper);
-			base.popup.appendChild(base.wnd);
-			base.wnd.appendChild(base.close);
+			if (contentUrl) {
+				target = contentUrl;
+			} else {
+				target = base.$el;
+			}
+			if (!base.$content) {
+				base.$content = $(target);
+			}
+
+			base.$wnd.append( base.$content.show() );
+
+			base.$popup.append(base.$helper);
+			base.$popup.append(base.$wnd);
+			base.$wnd.append(base.$close);
+
 			base.close.setAttribute('href', '#');
 
 			if (o.overlay) {
@@ -80,7 +90,7 @@
 			$doc.on('click', '.' + o.windowClass, function() {
 				return false;
 			});
-			base.$el.click(function(e) {
+			base.$el.on('click', function(e) {
 				if (base.isOpen) { return false; }
 				base._open();
 				e.returnValue = false;

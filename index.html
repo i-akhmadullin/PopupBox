@@ -5,14 +5,15 @@
 	<title>PopupBox</title>
 	<link href="https://raw.github.com/necolas/normalize.css/master/normalize.css" rel="stylesheet"/>
 	<link href="b-popupbox.css" rel="stylesheet"/>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
-	<script src="jquery.popupbox.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+	<script src="b-popupbox.js"></script>
 	<script>
 		$(document).ready(function() {
-			$("#random-block").popupbox();
-			$("#block-link").click(function() {
-				$("#random-block").popupbox("_open");
-			})
+			// var randomBlock = $("#random-block")
+			// randomBlock.popupbox();
+			// $("#block-link").click(function() {
+			// 	randomBlock.popupbox("_open");
+			// })
 
 			$("#animation-link").popupbox({
 				//overlay: false,
@@ -29,8 +30,6 @@
 					});
 				}
 			});
-
-			$("#simple-link").popupbox();
 		});
 	</script>
 </head>
@@ -40,13 +39,10 @@
 			<br>
 			<span style="font-size: 12px;">Simple popup - centering content with css, closes on click outside and <kbd>esc</kbd> button</span>
 		</h1>
-		<a href="#" id="block-link">Open popup (showing block)</a>
+		<a href="#random-block" id="block-link">Open popup (showing block)</a>
 		<br>
 		<br>
 		<a href="#some-random-content" id="animation-link">Open popup (with custom animation)</a>
-		<br>
-		<br>
-		<a href="#some-random-content" id="simple-link">Open popup (block from href)</a>
 	</div>
 
 	<div id="some-random-content" style="display: none;">
